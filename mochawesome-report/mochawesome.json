@@ -1,0 +1,214 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-04-12T01:28:11.061Z",
+    "end": "2025-04-12T01:28:21.036Z",
+    "duration": 9975,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "796d67a7-783f-4730-a916-cb03536acb24",
+      "title": "",
+      "fullFile": "C:\\Users\\gianr\\OneDrive\\Escritorio\\inventario app\\tests\\test.js",
+      "file": "\\tests\\test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3f90d416-e5b3-4cce-9080-4cf0e3e287f1",
+          "title": "Pruebas de la App de Inventario",
+          "fullFile": "C:\\Users\\gianr\\OneDrive\\Escritorio\\inventario app\\tests\\test.js",
+          "file": "\\tests\\test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Pruebas de la App de Inventario\"",
+              "fullTitle": "Pruebas de la App de Inventario \"before all\" hook in \"Pruebas de la App de Inventario\"",
+              "timedOut": false,
+              "duration": 8085,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser(\"chrome\").build();\nconst filePath = \"file://\" + path.resolve(__dirname, \"../index.html\");\nawait driver.get(filePath);",
+              "err": {},
+              "uuid": "1b9f526a-ac94-42b9-8034-ce8e4e95f742",
+              "parentUUID": "3f90d416-e5b3-4cce-9080-4cf0e3e287f1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Pruebas de la App de Inventario\"",
+              "fullTitle": "Pruebas de la App de Inventario \"after all\" hook in \"Pruebas de la App de Inventario\"",
+              "timedOut": false,
+              "duration": 109,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "96ffb12b-d433-4d24-9345-e51841dbec26",
+              "parentUUID": "3f90d416-e5b3-4cce-9080-4cf0e3e287f1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "HU-001 - Agregar producto",
+              "fullTitle": "Pruebas de la App de Inventario HU-001 - Agregar producto",
+              "timedOut": false,
+              "duration": 648,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.findElement(By.id(\"nombre\")).sendKeys(\"Monitor\");\nawait driver.findElement(By.id(\"cantidad\")).sendKeys(\"3\");\nawait driver.findElement(By.id(\"precio\")).sendKeys(\"150.00\");\nconst boton = await driver.findElement(By.css(\"form button\"));\nawait driver.wait(until.elementIsEnabled(boton), 5000); \nawait boton.click();\nconst nombre = await driver.findElement(By.xpath(\"//tbody/tr[1]/td[1]\")).getText();\nexpect(nombre).to.equal(\"Monitor\");\nawait screenshot(\"HU-001_AgregarProducto\");",
+              "err": {},
+              "uuid": "86f53a64-e49b-4381-8eb3-53914ab7e44e",
+              "parentUUID": "3f90d416-e5b3-4cce-9080-4cf0e3e287f1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "HU-002 - Ver producto agregado",
+              "fullTitle": "Pruebas de la App de Inventario HU-002 - Ver producto agregado",
+              "timedOut": false,
+              "duration": 100,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const filas = await driver.findElements(By.xpath(\"//tbody/tr\"));\nexpect(filas.length).to.be.greaterThan(0);\nawait screenshot(\"HU-002_VerProducto\");",
+              "err": {},
+              "uuid": "a1ac00fb-4731-4db6-ab66-14aab56264c8",
+              "parentUUID": "3f90d416-e5b3-4cce-9080-4cf0e3e287f1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "HU-003 - Eliminar producto",
+              "fullTitle": "Pruebas de la App de Inventario HU-003 - Eliminar producto",
+              "timedOut": false,
+              "duration": 202,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const eliminarBtn = await driver.findElement(By.xpath(\"//tbody/tr[1]/td[4]/button\"));\nawait eliminarBtn.click();\nconst filas = await driver.findElements(By.xpath(\"//tbody/tr\"));\nexpect(filas.length).to.equal(0);\nawait screenshot(\"HU-003_EliminarProducto\");",
+              "err": {},
+              "uuid": "d2360640-5e66-4534-ad69-1c62ebde494c",
+              "parentUUID": "3f90d416-e5b3-4cce-9080-4cf0e3e287f1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "HU-004 - Validar campos vacíos",
+              "fullTitle": "Pruebas de la App de Inventario HU-004 - Validar campos vacíos",
+              "timedOut": false,
+              "duration": 473,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.findElement(By.id(\"nombre\")).clear();\nawait driver.findElement(By.id(\"cantidad\")).clear();\nawait driver.findElement(By.id(\"precio\")).clear();\nawait driver.findElement(By.css(\"form button\")).click();\n  \n   \nexpect(true).to.be.true;\n  \nawait screenshot(\"HU-004_ValidacionCamposVacios\");",
+              "err": {},
+              "uuid": "d25e1fa4-794b-4e8e-88dc-2355ad773edc",
+              "parentUUID": "3f90d416-e5b3-4cce-9080-4cf0e3e287f1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "HU-005 - Validar entrada con espacios o ceros",
+              "fullTitle": "Pruebas de la App de Inventario HU-005 - Validar entrada con espacios o ceros",
+              "timedOut": false,
+              "duration": 337,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const nombre = await driver.findElement(By.id(\"nombre\"));\nconst cantidad = await driver.findElement(By.id(\"cantidad\"));\nconst precio = await driver.findElement(By.id(\"precio\"));\n  \nawait nombre.clear();\nawait cantidad.clear();\nawait precio.clear();\n  \nawait nombre.sendKeys(\"   \"); \nawait cantidad.sendKeys(\"0\");\nawait precio.sendKeys(\"0\");\n  \nawait driver.findElement(By.css(\"form button\")).click();\n  \nconst errorDiv = await driver.wait(until.elementLocated(By.id(\"error-mensaje\")), 5000);\nconst isVisible = await errorDiv.isDisplayed();\nexpect(isVisible).to.be.true;\n  \nconst texto = await errorDiv.getText();\nexpect(texto.toLowerCase()).to.include(\"inválido\");\n  \nawait screenshot(\"HU-005_ValidacionCamposInvalidos\");",
+              "err": {},
+              "uuid": "1e305265-15ce-458b-9861-f8627dafe32c",
+              "parentUUID": "3f90d416-e5b3-4cce-9080-4cf0e3e287f1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "86f53a64-e49b-4381-8eb3-53914ab7e44e",
+            "a1ac00fb-4731-4db6-ab66-14aab56264c8",
+            "d2360640-5e66-4534-ad69-1c62ebde494c",
+            "d25e1fa4-794b-4e8e-88dc-2355ad773edc",
+            "1e305265-15ce-458b-9861-f8627dafe32c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1760,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.1.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
