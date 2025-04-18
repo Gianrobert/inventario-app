@@ -3,37 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inventario Simple</title>
+  <title>Inventario App</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Gestión de Inventario</h1>
-    
-    <form id="form-producto">
-      <input type="text" id="nombre" placeholder="Nombre del producto" required />
-      <input type="number" id="cantidad" placeholder="Cantidad" required />
-      <input type="number" id="precio" placeholder="Precio" step="0.01" required />
-      <button type="submit">Agregar producto</button>
-      <div id="error-mensaje" style="display: none; color: red; margin-top: 10px;">
-        Datos inválidos. El nombre no puede estar vacío, y cantidad/precio deben ser mayores que cero.
-      </div>
-    </form>
+  <h1>Gestor de Inventario</h1>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Cantidad</th>
-          <th>Precio</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody id="tabla-productos"></tbody>
-    </table>
-  </div>
- 
+  <form id="form-producto">
+    <input type="text" id="nombre" placeholder="Nombre del producto" required />
+    <input type="number" id="cantidad" placeholder="Cantidad" required min="1" />
+    <input type="number" id="precio" placeholder="Precio" required step="0.01" min="0.01" />
+    <button type="submit">Agregar / Actualizar</button>
+  </form>
+
+  <div id="error-mensaje"></div>
+
+  <input type="text" id="buscar" placeholder="Buscar producto..." style="margin-top: 20px;" />
+  <button id="btn-limpiar">Limpiar Todo</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-productos"></tbody>
+  </table>
+
+  <h3>Total del inventario: <span id="total">$0.00</span></h3>
 
   <script src="script.js"></script>
 </body>
 </html>
+
